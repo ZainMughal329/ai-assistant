@@ -24,6 +24,7 @@ class APIs {
       final answer = jsonDecode(response.body);
       // print(answer["choices"][0]["message"]["content"]);
       // print(response.body);
+      print(response.body);
       return answer["choices"][0]["message"]["content"];
     }catch(e){
       Get.snackbar("Error", e.toString());

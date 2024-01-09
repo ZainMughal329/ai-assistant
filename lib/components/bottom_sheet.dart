@@ -30,12 +30,12 @@ class LanguageBottomSheet extends StatelessWidget {
               },
               controller: cont.searchCont,
               onChanged: (s){
-                search.value = s.toLowerCase();
+                search.value = s.trim().toLowerCase();
               },
               decoration: InputDecoration(
                 prefixIcon: Icon(Icons.translate_outlined),
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(30)),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
                   borderSide: BorderSide(color: AppColors.primaryColor),
                 ),
                 hintText: "Search Language..."
@@ -52,14 +52,20 @@ class LanguageBottomSheet extends StatelessWidget {
                 
                 
                 return ListView.builder(
+                  physics: BouncingScrollPhysics(),
                     itemCount: list.length,
+                    padding: EdgeInsets.only(left: mq.width * 0.04,top: mq.height * 0.02),
                     itemBuilder: (context,index){
                       return InkWell(
                           onTap: (){
                             fromLang.value = list[index].toString();
+                            cont.searchCont.clear();
                             Get.back();
                           },
-                          child: Text(list[index].toString()));
+                          child: Padding(
+                            padding:  EdgeInsets.only(bottom: 8.0),
+                            child: Text(list[index].toString(),style: TextStyle(fontSize: 20),),
+                          ));
                     });
               }),
             ),

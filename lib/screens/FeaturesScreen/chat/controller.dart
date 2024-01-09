@@ -26,6 +26,7 @@ class ChatController extends GetxController {
 
           list.add(message(msg: value, msgType: MessageType.bot));
           scrollDown();
+          textCont.clear();
         }).onError((error, stackTrace) {
           Get.snackbar("Error in askQuestion", error.toString());
         });
