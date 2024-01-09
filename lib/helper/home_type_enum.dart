@@ -1,6 +1,6 @@
 import 'package:ai_assistant/screens/FeaturesScreen/chat/ai_chat.dart';
 // import 'package:ai_assistant/screens/FeaturesScreen/ai_image.dart';
-import 'package:ai_assistant/screens/FeaturesScreen/ai_translator.dart';
+import 'package:ai_assistant/screens/FeaturesScreen/translator/ai_translator.dart';
 import 'package:ai_assistant/screens/FeaturesScreen/image/ai_image.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

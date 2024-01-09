@@ -14,6 +14,7 @@ class RoundButton extends StatelessWidget {
       padding:  EdgeInsets.symmetric(horizontal: 10,vertical: 10),
       child: InkWell(
         onTap: onPressed,
+        borderRadius: BorderRadius.all(Radius.circular(20)),
         child: Container(
           height: mq.height*0.06,
           width: mq.width*0.4,

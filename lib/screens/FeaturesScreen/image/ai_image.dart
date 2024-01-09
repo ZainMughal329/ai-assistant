@@ -18,6 +18,22 @@ class AIImageScreen extends StatelessWidget {
       appBar: AppBar(
         title: Text("AiTranslatorScreen"),
         elevation: 1,
+        actions: [
+          Obx(() {
+            return contr.loadingStatus.value == Status.completed
+                ? IconButton(
+                    padding: EdgeInsets.only(right: mq.width * 0.05),
+                    onPressed: () {
+                      contr.shareNetworkImage();
+                    },
+                    icon: Icon(
+                      Icons.share,
+                      color: AppColors.primaryColor,
+                    ),
+                  )
+                : SizedBox();
+          })
+        ],
       ),
       body: Padding(
         padding: EdgeInsets.only(
@@ -61,16 +77,27 @@ class AIImageScreen extends StatelessWidget {
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: mq.width * 0.2),
-              child: RoundButton(name: "Create", onPressed: () {
-                contr.generateAiImage();
-              }),
+              child: RoundButton(
+                  name: "Create",
+                  onPressed: () {
+                    contr.generateAiImage();
+                  }),
             )
           ],
         ),
       ),
+      floatingActionButton: Obx(
+        () => contr.loadingStatus.value == Status.completed
+            ? FloatingActionButton(
+                child: Icon(Icons.download_outlined),
+                onPressed: () {
+                  contr.saveNetworkImage();
+                },
+              )
+            : SizedBox(),
+      ),
     );
   }
-
 
   // this is the widget for crating image on the basis of enum status using switch cases
   Widget _imageWidget() => switch (contr.loadingStatus.value) {
@@ -80,21 +107,21 @@ class AIImageScreen extends StatelessWidget {
           ),
         // TODO: Handle this case.
         Status.loading => Lottie.asset(
-          'assets/animations/loading.json',
-          width: mq.width * 0.5,
-        ),
+            'assets/animations/loading.json',
+            width: mq.width * 0.5,
+          ),
         // TODO: Handle this case.
         Status.completed => ClipRRect(
-          borderRadius: BorderRadius.circular(5),
-          child: CachedNetworkImage(
-              imageUrl: contr.url,
+            borderRadius: BorderRadius.circular(5),
+            child: CachedNetworkImage(
+              imageUrl: contr.url.value,
               placeholder: (context, url) => Lottie.asset(
                 'assets/animations/loading.json',
                 width: mq.width * 0.5,
               ),
               errorWidget: (context, url, error) => Icon(Icons.error),
             ),
-        ),
+          ),
         // TODO: Handle this case.
       };
 }
