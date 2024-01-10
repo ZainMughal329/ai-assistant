@@ -2,6 +2,7 @@ import 'package:ai_assistant/components/RoundButton.dart';
 import 'package:ai_assistant/components/bottom_sheet.dart';
 import 'package:ai_assistant/helper/appColors.dart';
 import 'package:ai_assistant/helper/global.dart';
+import 'package:ai_assistant/main.dart';
 import 'package:ai_assistant/screens/FeaturesScreen/image/controller.dart';
 import 'package:ai_assistant/screens/FeaturesScreen/translator/controller.dart';
 import 'package:flutter/cupertino.dart';
@@ -19,7 +20,7 @@ class AiTranslatorScreen extends StatelessWidget {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
     return Scaffold(
       appBar: AppBar(
-        title: Text("AiTranslatorScreen"),
+        title: Text("AI Translator"),
       ),
       body: ListView(
         padding: EdgeInsets.symmetric(vertical: mq.height * 0.05,horizontal: 10),
@@ -94,14 +95,21 @@ class AiTranslatorScreen extends StatelessWidget {
             minLines: 3,
             maxLines: null,
             controller: contr.textCont,
+            cursorColor: Theme.of(context).lightButton,
             decoration: InputDecoration(
+              focusedBorder: OutlineInputBorder(
+                borderSide: BorderSide(
+                  color: Theme.of(context).lightButton,
+                ),
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+              ),
               border: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(10)),
-                borderSide: BorderSide(color: AppColors.primaryColor),
+                borderRadius: BorderRadius.all(Radius.circular(15)),
+                // borderSide: BorderSide(),
               ),
               hintText: "Type something to convert it into specified language",
             ),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.start,
           ),
           SizedBox(
             height: 20,

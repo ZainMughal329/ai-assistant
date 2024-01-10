@@ -27,6 +27,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      // byDefault light theme
       theme: ThemeData(
         appBarTheme: AppBarTheme(
           centerTitle: true,
@@ -35,16 +36,37 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(
             color: AppColors.primaryColor,
           ),
-
           titleTextStyle: TextStyle(
               color: AppColors.primaryColor,
               fontSize: 26,
               fontWeight: FontWeight.w600),
         ),
-
       ),
+      // dart theme
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        appBarTheme: AppBarTheme(
+          centerTitle: true,
+          backgroundColor: Colors.black54,
+          elevation: 1,
+          titleTextStyle: TextStyle(
+              // color: AppColors.primaryColor,
+              fontSize: 26,
+              fontWeight: FontWeight.w600),
+        ),
+      ),
+      // the current theme mode of application
+      themeMode: Pref.defaultTheme(),
       debugShowCheckedModeBanner: false,
       home: SplashView(),
     );
   }
+}
+
+extension AppTheme on ThemeData {
+  Color get lightTextColor =>
+      brightness == Brightness.dark ? Colors.white54 : Colors.black54;
+
+  Color get lightButton =>
+      brightness == Brightness.dark ? AppColors.darkBtnColor : AppColors.primaryColor;
 }

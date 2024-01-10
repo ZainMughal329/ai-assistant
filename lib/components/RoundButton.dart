@@ -1,4 +1,5 @@
 import 'package:ai_assistant/helper/global.dart';
+import 'package:ai_assistant/main.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +21,8 @@ class RoundButton extends StatelessWidget {
           width: mq.width*0.4,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.all(Radius.circular(20),),
-            color: Colors.blueAccent
+            // color: Colors.blueAccent
+            color: Theme.of(context).lightButton
           ),
           child: Center(child: Text(name,style: TextStyle(
             fontWeight: FontWeight.bold,

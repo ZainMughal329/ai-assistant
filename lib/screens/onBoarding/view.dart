@@ -1,6 +1,7 @@
 import 'package:ai_assistant/components/RoundButton.dart';
 import 'package:ai_assistant/components/boardingScreens.dart';
 import 'package:ai_assistant/helper/global.dart';
+import 'package:ai_assistant/main.dart';
 import 'package:ai_assistant/screens/homeScreen/view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -52,6 +53,7 @@ class OnBoardingScreen extends StatelessWidget {
                       fontWeight: FontWeight.w900,
                       fontSize: 20,
                       letterSpacing: 0.5,
+
                     ),
                   ),
                   Container(
@@ -61,7 +63,8 @@ class OnBoardingScreen extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         // fontWeight: FontWeight.w900,
-                        color: Colors.black54,
+                        // color: Colors.black54,
+                        color: Theme.of(context).lightTextColor,
                         fontSize: 20,
                         letterSpacing: 0.5,
                       ),
@@ -78,7 +81,7 @@ class OnBoardingScreen extends StatelessWidget {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(5),
                             color:
-                                i == index ? Colors.blueAccent : Colors.grey),
+                                i == index ? Theme.of(context).lightButton : Colors.grey),
                       ),
                     ),
                   ),

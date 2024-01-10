@@ -1,5 +1,6 @@
 import 'package:ai_assistant/helper/appColors.dart';
 import 'package:ai_assistant/helper/global.dart';
+import 'package:ai_assistant/main.dart';
 import 'package:ai_assistant/screens/FeaturesScreen/translator/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -17,7 +18,7 @@ class LanguageBottomSheet extends StatelessWidget {
       height: mq.height * 0.5,
       width: double.infinity,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(10),
       ),
       child: Padding(
@@ -28,11 +29,19 @@ class LanguageBottomSheet extends StatelessWidget {
               onTapOutside: (e) {
                 FocusScope.of(context).unfocus();
               },
+
               controller: cont.searchCont,
               onChanged: (s){
                 search.value = s.trim().toLowerCase();
               },
+              cursorColor: Theme.of(context).lightButton,
               decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Theme.of(context).lightButton,
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                ),
                 prefixIcon: Icon(Icons.translate_outlined),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.all(Radius.circular(15)),

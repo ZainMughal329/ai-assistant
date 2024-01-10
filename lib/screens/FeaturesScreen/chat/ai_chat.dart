@@ -1,6 +1,7 @@
 import 'package:ai_assistant/components/message_card.dart';
 import 'package:ai_assistant/helper/appColors.dart';
 import 'package:ai_assistant/helper/global.dart';
+import 'package:ai_assistant/main.dart';
 import 'package:ai_assistant/screens/FeaturesScreen/chat/controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -16,7 +17,7 @@ class AiChatScreen extends StatelessWidget {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       appBar: AppBar(
-        title: Text("AiTranslatorScreen"),
+        title: Text("Ai ChatBot (GPT 3.5)"),
         elevation: 1,
       ),
       body: Obx(() => Padding(
@@ -38,11 +39,17 @@ class AiChatScreen extends StatelessWidget {
                 onTapOutside: (e) {
                   FocusScope.of(context).unfocus();
                 },
+                cursorColor: Theme.of(context).lightButton,
                 controller: contr.textCont,
                 decoration: InputDecoration(
+
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(25),
+                    borderSide: BorderSide(color: Theme.of(context).lightButton),
+                  ),
                   isDense: true,
-                  focusColor: AppColors.primaryColor,
-                  fillColor: Colors.white,
+                  focusColor: Theme.of(context).scaffoldBackgroundColor,
+                  fillColor: Theme.of(context).scaffoldBackgroundColor,
                   filled: true,
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(25),
@@ -58,14 +65,14 @@ class AiChatScreen extends StatelessWidget {
             ),
             CircleAvatar(
               radius: 25,
-              backgroundColor: AppColors.primaryColor,
+              backgroundColor: Theme.of(context).lightButton,
               child: IconButton(
                   onPressed: () {
                     contr.askQuestion();
                   },
                   icon: Icon(
                     Icons.rocket_launch_outlined,
-                    color: Colors.white,
+                    // color: Colors.white,
                     size: 30,
                   )),
             ),

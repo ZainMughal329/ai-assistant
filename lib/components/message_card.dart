@@ -1,6 +1,7 @@
 import 'package:ai_assistant/helper/appColors.dart';
 import 'package:ai_assistant/helper/global.dart';
 import 'package:ai_assistant/helper/message.dart';
+import 'package:ai_assistant/main.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -18,8 +19,8 @@ class MessageCard extends StatelessWidget {
       Row(
         children: [
           CircleAvatar(
-            backgroundColor: AppColors.primaryColor,
-            child: Image.asset('assets/images/logo.png',width: 25,),
+            backgroundColor: Theme.of(context).lightButton,
+            child: Image.asset('assets/images/logo.png',width: 30,),
           ),
           SizedBox(width: 5,),
           Container(
@@ -33,7 +34,7 @@ class MessageCard extends StatelessWidget {
                   topLeft: Radius.circular(10),
                 ),
                 border: Border.all(
-                    color: Colors.black
+                    color: Theme.of(context).lightButton,
                 )
             ),
             child: Padding(

@@ -1,6 +1,7 @@
 import 'package:ai_assistant/components/RoundButton.dart';
 import 'package:ai_assistant/helper/appColors.dart';
 import 'package:ai_assistant/helper/global.dart';
+import 'package:ai_assistant/main.dart';
 import 'package:ai_assistant/screens/FeaturesScreen/image/controller.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class AIImageScreen extends StatelessWidget {
     return Scaffold(
       // backgroundColor: Colors.black12,
       appBar: AppBar(
-        title: Text("AiTranslatorScreen"),
+        title: Text("AI Image (DALL-E)"),
         elevation: 1,
         actions: [
           Obx(() {
@@ -52,19 +53,26 @@ class AIImageScreen extends StatelessWidget {
               minLines: 2,
               maxLines: null,
               controller: contr.textContr,
+              cursorColor: Theme.of(context).lightButton,
               decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Theme.of(context).lightButton,
+                  ),
+                  borderRadius: BorderRadius.all(Radius.circular(15)),
+                ),
                 // isDense: true,
                 // focusColor: AppColors.primaryColor,
                 // fillColor: Colors.white,
                 // filled: true,
                 border: OutlineInputBorder(
-                  borderRadius: BorderRadius.circular(10),
+                  borderRadius: BorderRadius.circular(15),
                   borderSide: BorderSide(color: AppColors.primaryColor),
                 ),
                 hintText:
                     "Imagine something wonderful and innovative \n Type here and I will create for you  ...",
               ),
-              textAlign: TextAlign.center,
+              textAlign: TextAlign.start,
             ),
 
             // ai image or lottie based on status
