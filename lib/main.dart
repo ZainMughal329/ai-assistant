@@ -1,3 +1,4 @@
+import 'package:ai_assistant/helper/appwriteInit.dart';
 import 'package:ai_assistant/helper/appColors.dart';
 import 'package:ai_assistant/helper/pref.dart';
 import 'package:ai_assistant/screens/splashScreen/view.dart';
@@ -11,6 +12,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   // getting the default directory of application for hive db
   Pref.initialize();
+  AppWriteInit.init();
   // setting UI mode
   await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
   await SystemChrome.setPreferredOrientations([
